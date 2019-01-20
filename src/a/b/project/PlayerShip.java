@@ -1,5 +1,6 @@
 package a.b.project;
 
+import android.graphics.Bitmap;
 
 public class PlayerShip  {
     private Bitmap bitmap;
