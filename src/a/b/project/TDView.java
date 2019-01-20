@@ -56,6 +56,32 @@ public class TDView extends SurfaceView implements Runnable {
     }
 
     private void draw(){
+	/*
+	  1.	 Check that our SurfaceHolder class is valid.
+	  2.	 Lock the Canvas object.
+	  3.	 Clear the screen with a call to drawColor().
+	  4.	 Splash some virtual paint on it by calling drawBitmap() and passing in the
+	  PlayerShip bitmap and an x, y coordinate.
+	  5.	 Finally, unlock the Canvas object and draw the scene.
+	*/
+	if (ourHolder.getSurface().isValid()) {
+
+	    //First we lock the area of memory we will be drawing to
+	    canvas = ourHolder.lockCanvas();
+
+	    // Rub out the last frame
+	    canvas.drawColor(Color.argb(255, 0, 0, 0));
+
+	    // Draw the player
+	    canvas.drawBitmap(
+			      player.getBitmap(),
+			      player.getX(),
+			      player.getY(),
+			      paint);
+
+	    // Unlock and draw the scene
+	    ourHolder.unlockCanvasAndPost(canvas);
+	}
 
     }
 
