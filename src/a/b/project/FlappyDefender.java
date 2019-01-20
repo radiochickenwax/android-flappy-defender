@@ -7,7 +7,7 @@ import android.view.View;
 import android.app.Activity;
 import android.content.Intent;
 
-public class MyActivity extends Activity implements View.OnClickListener {
+public class FlappyDefender extends Activity implements View.OnClickListener {
 
     // This is the entry point to our game
     @Override
