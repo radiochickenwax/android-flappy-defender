@@ -3,13 +3,15 @@ package a.b.project;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class MyActivity extends Activity
-{
-    /** Called when the activity is first created. */
+public class MyActivity extends Activity{
+
+    // This is the entry point to our game
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+    protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+
+	//Here we set our UI layout as the view
+	setContentView(R.layout.main);
+
     }
 }
