@@ -30,6 +30,12 @@ public class TDView extends SurfaceView implements Runnable {
     
     public TDView(Context context) {
 	super(context);
+	// Initialize our drawing objects
+	ourHolder = getHolder();
+	paint = new Paint();
+	// Initialize our player ship
+	player = new PlayerShip(context);
+
     }
 
 
@@ -44,6 +50,8 @@ public class TDView extends SurfaceView implements Runnable {
     }
 
     private void update(){
+	// Update the player
+	player.update();
 
     }
 
