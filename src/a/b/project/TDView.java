@@ -11,6 +11,7 @@ import android.view.SurfaceHolder;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
@@ -49,6 +50,29 @@ public class TDView extends SurfaceView implements Runnable {
 	}
     }
 
+
+    // SurfaceView allows us to handle the onTouchEvent
+    @Override
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+
+	// There are many different events in MotionEvent
+	// We care about just 2 - for now.
+	switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+
+	    // Has the player lifted their finger up?
+	case MotionEvent.ACTION_UP:
+	    // Do something here
+	    break;
+
+	    // Has the player touched the screen?
+	case MotionEvent.ACTION_DOWN:
+	    // Do something here
+	    break;
+	}
+        return true;
+    }
+
+    
     private void update(){
 	// Update the player
 	player.update();
@@ -88,6 +112,7 @@ public class TDView extends SurfaceView implements Runnable {
     private void control() {
 	
 	try {
+	    /*17 milliseconds = (1000(milliseconds)/60(FPS)) */
 	    gameThread.sleep(17);
 	} catch (InterruptedException e) {
 
