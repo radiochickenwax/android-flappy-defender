@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"
     android:background="@drawable/back0"
     >
-<TextView
+  <TextView
+    android:id="@+id/textHighScore"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="Hello World, get ready"
@@ -15,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="OK" />    
+        android:text="play" />    
     />
 </LinearLayout>
 
