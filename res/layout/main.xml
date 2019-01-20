@@ -9,7 +9,7 @@
     android:id="@+id/textHighScore"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Hello World, get ready"
+    android:text="High Score: 99999"
     />
 <Button
         android:id="@+id/button1"
