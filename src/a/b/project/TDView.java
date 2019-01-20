@@ -10,9 +10,10 @@ import android.view.SurfaceView;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
-              public TDView(Context context) {
-              super(context);
-          }
+
+    public TDView(Context context) {
+	super(context);
+    }
 
     @Override
     public void run() {
