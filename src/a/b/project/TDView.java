@@ -7,6 +7,10 @@ GameActivity class.
 */
 import android.content.Context;
 import android.view.SurfaceView;
+import android.view.SurfaceHolder;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
@@ -15,6 +19,13 @@ public class TDView extends SurfaceView implements Runnable {
 
     Thread gameThread = null;
 
+    //Game objects
+    private PlayerShip player;
+
+    // For drawing
+    private Paint paint;
+    private Canvas canvas;
+    private SurfaceHolder ourHolder;
 
     
     public TDView(Context context) {
