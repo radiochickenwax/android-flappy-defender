@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
+import android.app.Activity;
+import android.content.Intent;
 
 public class MyActivity extends Activity implements View.OnClickListener {
 
@@ -23,7 +25,14 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-      //Our code goes here
+	// must be the Play button.
+	// Create a new Intent object
+	Intent i = new Intent(this, GameActivity.class);
+	// Start our GameActivity class via the Intent
+	startActivity(i);
+	// Now shut this activity down
+	finish();
+	
     }
     
 }
