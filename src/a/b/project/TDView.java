@@ -35,5 +35,14 @@ public class TDView extends SurfaceView implements Runnable {
     private void control(){
 
     }
-    
+
+    public void pause() {
+	playing = false;
+	try {
+	    gameThread.join();
+	} catch (InterruptedException e) {
+
+	}
+
+    }
 }
