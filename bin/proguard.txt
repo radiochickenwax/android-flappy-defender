@@ -1,4 +1,4 @@
-# view AndroidManifest.xml #generated:14
+# view AndroidManifest.xml #generated:16
 -keep class a.b.project.GameActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:7
