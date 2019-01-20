@@ -10,10 +10,18 @@ import android.view.SurfaceView;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
+
     volatile boolean playing; /*using the volatile keyword as it will be accessed from outside the thread and from within.*/
+
+    Thread gameThread = null;
+
+
+    
     public TDView(Context context) {
 	super(context);
     }
+
+
 
     @Override
     public void run() {
@@ -36,6 +44,7 @@ public class TDView extends SurfaceView implements Runnable {
 
     }
 
+
     public void pause() {
 	playing = false;
 	try {
@@ -45,4 +54,14 @@ public class TDView extends SurfaceView implements Runnable {
 	}
 
     }
+
+
+    // Make a new thread and start it
+    // Execution moves to our R
+    public void resume() {
+	playing = true;
+	gameThread = new Thread(this);
+	gameThread.start();
+    }
+    
 }
