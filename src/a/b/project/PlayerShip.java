@@ -21,7 +21,7 @@ public class PlayerShip  {
     private int x, y;
     private int speed = 0;
     private boolean boosting;
-    private final int GRAVITY = -12;
+    private final int GRAVITY = -120;
 
     // Stop ship leaving the screen
     private int maxY;
@@ -29,12 +29,12 @@ public class PlayerShip  {
 
     //Limit the bounds of the ship's speed
     private final int MIN_SPEED = 1;
-    private final int MAX_SPEED = 20;
+    private final int MAX_SPEED = 200;
 
 
 
     // Constructor
-    public PlayerShip(Context context) {
+    public PlayerShip(Context context, int screenX, int screenY) {
 	boosting = false;
 	x = 50;
 	y = 50;
