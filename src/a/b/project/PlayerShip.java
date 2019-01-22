@@ -41,6 +41,8 @@ public class PlayerShip  {
 	speed = 1;
 	bitmap = BitmapFactory.decodeResource
             (context.getResources(), R.drawable.ship);
+	maxY = screenY - bitmap.getHeight();
+	minY = 0;
 
     }
 
