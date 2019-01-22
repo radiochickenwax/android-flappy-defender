@@ -21,7 +21,7 @@ public class PlayerShip  {
     private int x, y;
     private int speed = 0;
     private boolean boosting;
-    private final int GRAVITY = -120;
+    private final int GRAVITY = -12;
 
     // Stop ship leaving the screen
     private int maxY;
@@ -29,7 +29,7 @@ public class PlayerShip  {
 
     //Limit the bounds of the ship's speed
     private final int MIN_SPEED = 1;
-    private final int MAX_SPEED = 200;
+    private final int MAX_SPEED = 20;
 
 
 
