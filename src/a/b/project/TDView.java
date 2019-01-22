@@ -62,11 +62,13 @@ public class TDView extends SurfaceView implements Runnable {
 	    // Has the player lifted their finger up?
 	case MotionEvent.ACTION_UP:
 	    // Do something here
+	    player.stopBoosting();
 	    break;
 
 	    // Has the player touched the screen?
 	case MotionEvent.ACTION_DOWN:
 	    // Do something here
+	    player.setBoosting();
 	    break;
 	}
         return true;
