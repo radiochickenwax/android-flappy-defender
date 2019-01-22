@@ -21,6 +21,16 @@ public class PlayerShip  {
     private int x, y;
     private int speed = 0;
     private boolean boosting;
+    private final int GRAVITY = -12;
+
+    // Stop ship leaving the screen
+    private int maxY;
+    private int minY;
+
+    //Limit the bounds of the ship's speed
+    private final int MIN_SPEED = 1;
+    private final int MAX_SPEED = 20;
+
 
 
     // Constructor
@@ -43,7 +53,37 @@ public class PlayerShip  {
     }
 
     public void update() {
-      x++;
+	// Are we boosting?
+	if (boosting) {
+	    // Speed up
+	    speed += 2;
+	} else {
+	    // Slow down
+	    speed -= 5;
+	}
+
+	// Constrain top speed
+	if (speed > MAX_SPEED) {
+	    speed = MAX_SPEED;
+	}
+
+	// Never stop completely
+	if (speed < MIN_SPEED) {
+	    speed = MIN_SPEED;
+	}
+
+	// move the ship up or down
+	y -= speed + GRAVITY;
+
+	// But don't let ship stray off screen
+	if (y < minY) {
+            y = minY;
+        }
+
+        if (y > maxY) {
+	    y = maxY;
+        }
+
     }
 
 
