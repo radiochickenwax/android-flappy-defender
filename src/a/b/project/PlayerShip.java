@@ -20,16 +20,26 @@ public class PlayerShip  {
     private Bitmap bitmap;
     private int x, y;
     private int speed = 0;
+    private boolean boosting;
 
 
     // Constructor
     public PlayerShip(Context context) {
+	boosting = false;
 	x = 50;
 	y = 50;
 	speed = 1;
 	bitmap = BitmapFactory.decodeResource
             (context.getResources(), R.drawable.ship);
 
+    }
+
+    public void setBoosting() {
+	boosting = true;
+    }
+
+    public void stopBoosting() {
+	boosting = false;
     }
 
     public void update() {
