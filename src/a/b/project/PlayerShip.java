@@ -29,7 +29,7 @@ public class PlayerShip  {
 
     //Limit the bounds of the ship's speed
     private final int MIN_SPEED = 1;
-    private final int MAX_SPEED = 20;
+    private final int MAX_SPEED = 15;
 
 
 
