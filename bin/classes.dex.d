@@ -9,5 +9,7 @@
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/BuildConfig.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/TDView.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/R$attr.class \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/EnemyShip.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/R.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/R$drawable.class \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/EnemyShip.class \
