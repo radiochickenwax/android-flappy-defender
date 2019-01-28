@@ -12,4 +12,6 @@
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/EnemyShip.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/R.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/R$drawable.class \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/a/b/project/SpaceDust.class \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/EnemyShip.class \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/classes/SpaceDust.class \

@@ -12,6 +12,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.MotionEvent;
+import java.util.ArrayList;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
@@ -25,6 +26,10 @@ public class TDView extends SurfaceView implements Runnable {
     public EnemyShip enemy1;
     public EnemyShip enemy2;
     public EnemyShip enemy3;
+
+    // Make some random space dust
+    public ArrayList<SpaceDust> dustList = new ArrayList<SpaceDust>();
+
     
     // For drawing
     private Paint paint;
@@ -42,6 +47,17 @@ public class TDView extends SurfaceView implements Runnable {
 	enemy1 = new EnemyShip(context, x, y);
 	enemy2 = new EnemyShip(context, x, y);
 	enemy3 = new EnemyShip(context, x, y);
+
+	/*
+	  initialize a whole bunch of the SpaceDust objects
+	  using a for loop and then stash them into the ArrayList object:
+	 */
+	int numSpecs = 40;
+	for (int i = 0; i < numSpecs; i++) {
+	    // Where will the dust spawn?
+	    SpaceDust spec = new SpaceDust(x, y);
+	    dustList.add(spec);
+	}
 
     }
 
