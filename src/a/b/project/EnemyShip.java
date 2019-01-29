@@ -4,12 +4,17 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import java.util.Random;
+import android.graphics.Rect;
 
 public class EnemyShip{
     private Bitmap bitmap;
     private int x, y;
     private int speed = 1;
 
+    // A hit box for collision detection
+    private Rect hitBox;
+
+    
     // Detect enemies leaving the screen
     private int maxX;
     private int minX;
@@ -31,6 +36,11 @@ public class EnemyShip{
 	return y;
     }
       
+    // This is used by the TDView update() method to
+    // Make an enemy out of bounds and force a re-spawn
+    public void setX(int x) {
+	this.x = x;
+    }
 
 
     // Constructor
@@ -38,6 +48,8 @@ public class EnemyShip{
 	bitmap = BitmapFactory.decodeResource
 	    (context.getResources(), R.drawable.enemy);
 
+	// Initialize the hit box
+	hitBox = new Rect(x, y, bitmap.getWidth(), bitmap.getHeight());
 
 
 	maxX   =   screenX;
@@ -65,7 +77,19 @@ public class EnemyShip{
 	    x = maxX;
 	    y = generator.nextInt(maxY) - bitmap.getHeight();
         }
+
+	// Refresh hit box location
+	hitBox.left = x;
+	hitBox.top = y;
+	hitBox.right = x + bitmap.getWidth();
+	hitBox.bottom = y + bitmap.getHeight();
+
     }
+
+    public Rect getHitbox(){
+	return hitBox;
+    }
+
 
 }
 

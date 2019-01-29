@@ -3,6 +3,7 @@ package a.b.project;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 
 /*What do we need our PlayerShip class to be able to know about itself? As a bare
 minimum it needs to:
@@ -23,6 +24,9 @@ public class PlayerShip  {
     private boolean boosting;
     private final int GRAVITY = -12;
 
+    // A hit box for collision detection
+   private Rect hitBox;
+
     // Stop ship leaving the screen
     private int maxY;
     private int minY;
@@ -41,6 +45,11 @@ public class PlayerShip  {
 	speed = 1;
 	bitmap = BitmapFactory.decodeResource
             (context.getResources(), R.drawable.ship);
+
+	// Initialize the hit box
+	hitBox = new Rect(x, y, bitmap.getWidth(), bitmap.getHeight());
+
+	
 	maxY = screenY - bitmap.getHeight();
 	minY = 0;
 
@@ -86,6 +95,12 @@ public class PlayerShip  {
 	    y = maxY;
         }
 
+	// Refresh hit box location
+	hitBox.left = x;
+	hitBox.top = y;
+	hitBox.right = x + bitmap.getWidth();
+	hitBox.bottom = y + bitmap.getHeight();
+
     }
 
 
@@ -106,4 +121,9 @@ public class PlayerShip  {
 	return y;
     }
 
+    public Rect getHitbox(){
+	return hitBox;
+    }
+
+    
 }
