@@ -146,11 +146,6 @@ public class TDView extends SurfaceView implements Runnable {
 	    //First we lock the area of memory we will be drawing to
 	    canvas = ourHolder.lockCanvas();
 
-	canvas.drawRect(enemy3.getHitbox().left,
-			enemy3.getHitbox().top,
-			enemy3.getHitbox().right,
-			enemy3.getHitbox().bottom,
-			paint);
 	    // Rub out the last frame
 	    canvas.drawColor(Color.argb(255, 0, 0, 0));
 
@@ -176,7 +171,13 @@ public class TDView extends SurfaceView implements Runnable {
 			    enemy2.getHitbox().right,
 			    enemy2.getHitbox().bottom,
 			    paint);
-	    
+
+	    canvas.drawRect(enemy3.getHitbox().left,
+			    enemy3.getHitbox().top,
+			    enemy3.getHitbox().right,
+			    enemy3.getHitbox().bottom,
+			    paint);
+
 	    // Rub out the last frame
 	    canvas.drawColor(Color.argb(255, 0, 0, 0));
 
