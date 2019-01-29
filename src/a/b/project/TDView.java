@@ -179,7 +179,7 @@ public class TDView extends SurfaceView implements Runnable {
 			    paint);
 
 	    // Rub out the last frame
-	    canvas.drawColor(Color.argb(255, 0, 0, 0));
+	    //canvas.drawColor(Color.argb(255, 0, 0, 0));
 
 	    // White specs of dust
 	    paint.setColor(Color.argb(255, 255, 255, 255));
