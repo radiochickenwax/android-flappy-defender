@@ -63,6 +63,9 @@ public class PlayerShip  {
 	return shieldStrength;
     }
 
+    public void reduceShieldStrength(){
+      shieldStrength --;
+    }
 
     public void setBoosting() {
 	boosting = true;

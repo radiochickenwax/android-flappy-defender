@@ -17,6 +17,7 @@ import android.graphics.Rect;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
+    private Context context;
     private   float distanceRemaining;
     private   long timeTaken;
     private   long timeStarted;
@@ -49,6 +50,7 @@ public class TDView extends SurfaceView implements Runnable {
     
     public TDView(Context context, int x, int y) {
 	super(context);
+	this.context = context;
 
 	screenX = x;
 	screenY = y;
@@ -74,6 +76,29 @@ public class TDView extends SurfaceView implements Runnable {
 	    dustList.add(spec);
 	}
 
+    }
+
+
+    private void startGame() {
+        //Initialize game objects
+            player = new PlayerShip(context, screenX, screenY);
+            enemy1 = new EnemyShip(context, screenX, screenY);
+            enemy2 = new EnemyShip(context, screenX, screenY);
+            enemy3 = new EnemyShip(context, screenX, screenY);
+
+              int numSpecs = 40;
+              for (int i = 0; i < numSpecs; i++) {
+                  // Where will the dust spawn?
+                  SpaceDust spec = new SpaceDust(screenX, screenY);
+                  dustList.add(spec);
+              }
+
+              // Reset time and distance
+              distanceRemaining = 10000;// 10 km
+              timeTaken = 0;
+
+              // Get start time
+              timeStarted = System.currentTimeMillis();
     }
 
 
@@ -116,7 +141,7 @@ public class TDView extends SurfaceView implements Runnable {
 	// Collision detection on new positions
 	// Before move because we are testing last frames
 	// position which has just been drawn
-
+	boolean hitDetected = false;
 	// If you are using images in excess of 100 pixels
 	// wide then increase the -100 value accordingly
 	if(Rect.intersects
@@ -133,7 +158,16 @@ public class TDView extends SurfaceView implements Runnable {
 	   (player.getHitbox(), enemy3.getHitbox())){
 	    enemy3.setX(-200);
 	}
+
 	
+	if(hitDetected) {
+	    player.reduceShieldStrength();
+	    if (player.getShieldStrength() < 0) {
+                //game over so do something
+	    }
+	}
+
+
 	// Update the player
 	player.update();
 	// Update the enemies
