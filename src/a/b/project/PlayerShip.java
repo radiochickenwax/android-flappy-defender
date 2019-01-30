@@ -18,11 +18,13 @@ minimum it needs to:
 
 */
 public class PlayerShip  {
+    
     private Bitmap bitmap;
     private int x, y;
     private int speed = 0;
     private boolean boosting;
     private final int GRAVITY = -12;
+    private int shieldStrength;
 
     // A hit box for collision detection
    private Rect hitBox;
@@ -43,6 +45,8 @@ public class PlayerShip  {
 	x = 50;
 	y = 50;
 	speed = 1;
+	shieldStrength = 2;
+	
 	bitmap = BitmapFactory.decodeResource
             (context.getResources(), R.drawable.ship);
 
@@ -54,6 +58,11 @@ public class PlayerShip  {
 	minY = 0;
 
     }
+
+    public int getShieldStrength() {
+	return shieldStrength;
+    }
+
 
     public void setBoosting() {
 	boosting = true;

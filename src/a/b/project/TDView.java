@@ -17,6 +17,15 @@ import android.graphics.Rect;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
+    private   float distanceRemaining;
+    private   long timeTaken;
+    private   long timeStarted;
+    private   long fastestTime;
+
+    private int screenX;
+    private int screenY;
+
+
 
     volatile boolean playing; /*using the volatile keyword as it will be accessed from outside the thread and from within.*/
 
@@ -40,6 +49,11 @@ public class TDView extends SurfaceView implements Runnable {
     
     public TDView(Context context, int x, int y) {
 	super(context);
+
+	screenX = x;
+	screenY = y;
+
+
 	// Initialize our drawing objects
 	ourHolder = getHolder();
 	paint = new Paint();
@@ -207,6 +221,23 @@ public class TDView extends SurfaceView implements Runnable {
 		 enemy3.getX(),
 		 enemy3.getY(), paint);
 
+	    // Draw the hud
+	    paint.setTextAlign(Paint.Align.LEFT);
+	    paint.setColor(Color.argb(255, 255, 255, 255));
+	    paint.setTextSize(25);
+	    canvas.drawText("Fastest:"+ fastestTime + "s", 10, 20, paint);
+	    canvas.drawText("Time:" + timeTaken + "s", screenX / 2, 20,
+			    paint);
+	    canvas.drawText("Distance:" +
+			    distanceRemaining / 1000 +
+			    " KM", screenX / 3, screenY - 20, paint);
+
+	    canvas.drawText("Shield:" +
+			    player.getShieldStrength(), 10, screenY - 20, paint);
+
+	    canvas.drawText("Speed:" +
+			    player.getSpeed() * 60 +
+			    " MPS", (screenX /3 ) * 2, screenY - 20, paint);
 
 	    // Unlock and draw the scene
 	    ourHolder.unlockCanvasAndPost(canvas);
