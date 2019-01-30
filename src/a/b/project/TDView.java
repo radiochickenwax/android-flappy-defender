@@ -17,6 +17,7 @@ import android.graphics.Rect;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
+    private boolean gameEnded;
     private Context context;
     private   float distanceRemaining;
     private   long timeTaken;
@@ -99,6 +100,7 @@ public class TDView extends SurfaceView implements Runnable {
 
               // Get start time
               timeStarted = System.currentTimeMillis();
+	      gameEnded = false;
     }
 
 
@@ -164,6 +166,7 @@ public class TDView extends SurfaceView implements Runnable {
 	    player.reduceShieldStrength();
 	    if (player.getShieldStrength() < 0) {
                 //game over so do something
+		gameEnded = true;
 	    }
 	}
 
@@ -177,6 +180,30 @@ public class TDView extends SurfaceView implements Runnable {
 	for (SpaceDust sd : dustList) {
 	    sd.update(player.getSpeed());
 	}
+
+	if(!gameEnded) {
+	    //subtract distance to home planet based on current speed
+	    distanceRemaining -= player.getSpeed();
+
+	    //How long has the player been flying
+	    timeTaken = System.currentTimeMillis() - timeStarted;
+	}
+
+	//Completed the game!
+	if(distanceRemaining < 0){
+	    //check for new fastest time
+	    if(timeTaken < fastestTime) {
+		fastestTime = timeTaken;
+	    }
+
+	    // avoid ugly negative numbers
+	    // in the HUD
+	    distanceRemaining = 0;
+
+	    // Now end the game
+	    gameEnded = true;
+	}
+
 
     }
 
