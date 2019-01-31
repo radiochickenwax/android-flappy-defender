@@ -60,23 +60,24 @@ public class TDView extends SurfaceView implements Runnable {
 	// Initialize our drawing objects
 	ourHolder = getHolder();
 	paint = new Paint();
-	// Initialize our player ship
-	player = new PlayerShip(context, x, y);
-	enemy1 = new EnemyShip(context, x, y);
-	enemy2 = new EnemyShip(context, x, y);
-	enemy3 = new EnemyShip(context, x, y);
+	// // Initialize our player ship
+	// player = new PlayerShip(context, x, y);
+	// enemy1 = new EnemyShip(context, x, y);
+	// enemy2 = new EnemyShip(context, x, y);
+	// enemy3 = new EnemyShip(context, x, y);
 
-	/*
-	  initialize a whole bunch of the SpaceDust objects
-	  using a for loop and then stash them into the ArrayList object:
-	 */
-	int numSpecs = 40;
-	for (int i = 0; i < numSpecs; i++) {
-	    // Where will the dust spawn?
-	    SpaceDust spec = new SpaceDust(x, y);
-	    dustList.add(spec);
-	}
+	// /*
+	//   initialize a whole bunch of the SpaceDust objects
+	//   using a for loop and then stash them into the ArrayList object:
+	//  */
+	// int numSpecs = 40;
+	// for (int i = 0; i < numSpecs; i++) {
+	//     // Where will the dust spawn?
+	//     SpaceDust spec = new SpaceDust(x, y);
+	//     dustList.add(spec);
+	// }
 
+	startGame();
     }
 
 
