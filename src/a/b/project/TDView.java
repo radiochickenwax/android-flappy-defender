@@ -83,6 +83,7 @@ public class TDView extends SurfaceView implements Runnable {
 
     private void startGame() {
         //Initialize game objects
+	gameEnded = false;
             player = new PlayerShip(context, screenX, screenY);
             enemy1 = new EnemyShip(context, screenX, screenY);
             enemy2 = new EnemyShip(context, screenX, screenY);
@@ -140,7 +141,7 @@ public class TDView extends SurfaceView implements Runnable {
     }
 
     
-    private void update(){
+    private void update() {
 	// Collision detection on new positions
 	// Before move because we are testing last frames
 	// position which has just been drawn
@@ -286,26 +287,44 @@ public class TDView extends SurfaceView implements Runnable {
 		 enemy3.getX(),
 		 enemy3.getY(), paint);
 
-	    // Draw the hud
-	    paint.setTextAlign(Paint.Align.LEFT);
-	    paint.setColor(Color.argb(255, 255, 255, 255));
-	    paint.setTextSize(10);
-	    canvas.drawText("Fastest:"+ fastestTime + "s", 10, 20, paint);
-	    canvas.drawText("Time:" + timeTaken + "s", screenX / 2, 20,
-			    paint);
-	    canvas.drawText("Distance:" +
-			    distanceRemaining / 1000 +
-			    " KM", screenX / 3, screenY - 20, paint);
+	    if (!gameEnded) {
+		// Draw the hud
+		paint.setTextAlign(Paint.Align.LEFT);
+		paint.setColor(Color.argb(255, 255, 255, 255));
+		paint.setTextSize(10);
+		canvas.drawText("Fastest:"+ fastestTime + "s", 10, 20, paint);
+		canvas.drawText("Time:" + timeTaken + "s", screenX / 2, 20,
+				paint);
+		canvas.drawText("Distance:" +
+				distanceRemaining / 1000 +
+				" KM", screenX / 3, screenY - 20, paint);
 
-	    canvas.drawText("Shield:" +
-			    player.getShieldStrength(), 10, screenY - 20, paint);
+		canvas.drawText("Shield:" +
+				player.getShieldStrength(), 10, screenY - 20, paint);
 
-	    canvas.drawText("Speed:" +
-			    player.getSpeed() * 60 +
-			    " MPS", (screenX /3 ) * 2, screenY - 20, paint);
+		canvas.drawText("Speed:" +
+				player.getSpeed() * 60 +
+				" MPS", (screenX /3 ) * 2, screenY - 20, paint);
 
+	    } else {
+		// Show pause screen
+		paint.setTextSize(80);
+		paint.setTextAlign(Paint.Align.CENTER);
+		canvas.drawText("Game Over", screenX/2, 100, paint);
+		paint.setTextSize(25);
+		canvas.drawText("Fastest:"+ 
+				fastestTime + "s", screenX/2, 160, paint);
+		canvas.drawText("Time:" + timeTaken + 
+				"s", screenX / 2, 200, paint);
+		canvas.drawText("Distance remaining:" + 
+				distanceRemaining/1000 + " KM",screenX/2, 240, paint);
+		paint.setTextSize(80);
+		canvas.drawText("Tap to replay!", screenX/2, 350, paint);
+	    }
+	    
 	    // Unlock and draw the scene
 	    ourHolder.unlockCanvasAndPost(canvas);
+
 	}
 
     }
