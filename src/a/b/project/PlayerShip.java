@@ -45,7 +45,7 @@ public class PlayerShip  {
 	x = 50;
 	y = 50;
 	speed = 1;
-	shieldStrength = 2;
+	shieldStrength = 5;
 	
 	bitmap = BitmapFactory.decodeResource
             (context.getResources(), R.drawable.ship);
@@ -64,7 +64,7 @@ public class PlayerShip  {
     }
 
     public void reduceShieldStrength(){
-      shieldStrength --;
+      shieldStrength--;
     }
 
     public void setBoosting() {
@@ -79,7 +79,7 @@ public class PlayerShip  {
 	// Are we boosting?
 	if (boosting) {
 	    // Speed up
-	    speed += 2;
+	    speed += 5;
 	} else {
 	    // Slow down
 	    speed -= 5;
@@ -96,7 +96,7 @@ public class PlayerShip  {
 	}
 
 	// move the ship up or down
-	y -= speed + GRAVITY;
+	y -= 2*speed + GRAVITY;
 
 	// But don't let ship stray off screen
 	if (y < minY) {

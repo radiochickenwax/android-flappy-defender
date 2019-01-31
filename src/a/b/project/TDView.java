@@ -149,16 +149,19 @@ public class TDView extends SurfaceView implements Runnable {
 	// wide then increase the -100 value accordingly
 	if(Rect.intersects
 	   (player.getHitbox(), enemy1.getHitbox())){
+	    hitDetected = true;
 	    enemy1.setX(-200);
 	}
 
 	if(Rect.intersects
 	   (player.getHitbox(), enemy2.getHitbox())){
+	    hitDetected = true;
 	    enemy2.setX(-200);
 	}
 
 	if(Rect.intersects
 	   (player.getHitbox(), enemy3.getHitbox())){
+	    hitDetected = true;
 	    enemy3.setX(-200);
 	}
 
