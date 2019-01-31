@@ -289,7 +289,7 @@ public class TDView extends SurfaceView implements Runnable {
 	    // Draw the hud
 	    paint.setTextAlign(Paint.Align.LEFT);
 	    paint.setColor(Color.argb(255, 255, 255, 255));
-	    paint.setTextSize(25);
+	    paint.setTextSize(10);
 	    canvas.drawText("Fastest:"+ fastestTime + "s", 10, 20, paint);
 	    canvas.drawText("Time:" + timeTaken + "s", screenX / 2, 20,
 			    paint);
