@@ -135,9 +135,13 @@ public class TDView extends SurfaceView implements Runnable {
 	case MotionEvent.ACTION_DOWN:
 	    // Do something here
 	    player.setBoosting();
+	    // If we are currently on the pause screen, start a new game
+	    if(gameEnded){
+		startGame();
+	    }
 	    break;
 	}
-        return true;
+	return true;
     }
 
     
