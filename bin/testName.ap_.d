@@ -15,4 +15,8 @@
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/res/drawable-hdpi/ic_launcher.png \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/res/drawable-ldpi/ic_launcher.png \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/res/drawable-xhdpi/ic_launcher.png \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/bump_orig.3gpp \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/bump.ogg \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/AndroidManifest.xml \

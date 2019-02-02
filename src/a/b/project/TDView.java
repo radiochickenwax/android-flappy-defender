@@ -11,12 +11,20 @@ import android.view.SurfaceHolder;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.SoundPool;
 import android.view.MotionEvent;
 import java.util.ArrayList;
 import android.graphics.Rect;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
+
+    private   SoundPool soundPool;
+    int   start = -1;
+    int   bump = -1;
+    int   destroyed = -1;
+    int   win = -1;
+
     private boolean gameEnded;
     private Context context;
     private   float distanceRemaining;
