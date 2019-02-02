@@ -20,6 +20,8 @@
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/start.ogg \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/bump_orig.3gpp \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/destroyed.ogg \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/start_theme.ogg \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/win.ogg \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/bump.ogg \
+/cf/home/notes/android/sketches/2019-01-15/flappy-defender/assets/sounds/data/wa-wa-wah.ogg \
 /cf/home/notes/android/sketches/2019-01-15/flappy-defender/bin/AndroidManifest.xml \

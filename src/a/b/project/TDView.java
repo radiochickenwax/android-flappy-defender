@@ -26,8 +26,10 @@ public class TDView extends SurfaceView implements Runnable {
 
     private   SoundPool soundPool;
     int   start = -1;
+    int   start_theme = -1;    
     int   bump = -1;
     int   destroyed = -1;
+    int   wa_wa_wah = -1;
     int   win = -1;
 
     private boolean gameEnded;
@@ -75,12 +77,18 @@ public class TDView extends SurfaceView implements Runnable {
 	    //create our three fx in memory ready for use
 	    descriptor = assetManager.openFd("sounds/data/start.ogg");
 	    start = soundPool.load(descriptor, 0);
+	    descriptor = assetManager.openFd("sounds/data/start_theme.ogg");
+	    start_theme = soundPool.load(descriptor, 0);
+	    
 	    descriptor = assetManager.openFd("sounds/data/win.ogg");
 	    win = soundPool.load(descriptor, 0);
 	    descriptor = assetManager.openFd("sounds/data/bump.ogg");
 	    bump = soundPool.load(descriptor, 0);
 	    descriptor = assetManager.openFd("sounds/data/destroyed.ogg");
 	    destroyed = soundPool.load(descriptor, 0);
+	    descriptor = assetManager.openFd("sounds/data/wa-wa-wah.ogg");
+	    wa_wa_wah = soundPool.load(descriptor, 0);
+
 	}catch(IOException e){
 	    //Print an error message to the console
 	    Log.e("error", "failed to load sound files");
@@ -115,6 +123,7 @@ public class TDView extends SurfaceView implements Runnable {
 
 
     private void startGame() {
+	soundPool.play(start_theme,1,1,0,0,1);
 	soundPool.play(start,1,1,0,0,1);
         //Initialize game objects
 	gameEnded = false;
@@ -210,6 +219,7 @@ public class TDView extends SurfaceView implements Runnable {
 	    player.reduceShieldStrength();	    
 	    if (player.getShieldStrength() < 0) {
                 //game over so do something
+		soundPool.play(wa_wa_wah, 1, 1, 0, 0, 1);
 		soundPool.play(destroyed, 1, 1, 0, 0, 1);
 		gameEnded = true;
 	    }
