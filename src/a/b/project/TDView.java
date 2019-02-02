@@ -6,15 +6,20 @@ current state of our application within the Android system that is held by our
 GameActivity class. 
 */
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.AssetFileDescriptor;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.AudioManager;
 import android.media.SoundPool;
+import android.util.Log;
 import android.view.MotionEvent;
-import java.util.ArrayList;
 import android.graphics.Rect;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
@@ -61,6 +66,26 @@ public class TDView extends SurfaceView implements Runnable {
 	super(context);
 	this.context = context;
 
+	// This SoundPool is deprecated but don't worry
+	soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
+	try{
+	    //Create objects of the 2 required classes
+	    AssetManager assetManager = context.getAssets();
+	    AssetFileDescriptor descriptor;
+	    //create our three fx in memory ready for use
+	    descriptor = assetManager.openFd("sounds/data/start.ogg");
+	    start = soundPool.load(descriptor, 0);
+	    descriptor = assetManager.openFd("sounds/data/win.ogg");
+	    win = soundPool.load(descriptor, 0);
+	    descriptor = assetManager.openFd("sounds/data/bump.ogg");
+	    bump = soundPool.load(descriptor, 0);
+	    descriptor = assetManager.openFd("sounds/data/destroyed.ogg");
+	    destroyed = soundPool.load(descriptor, 0);
+	}catch(IOException e){
+	    //Print an error message to the console
+	    Log.e("error", "failed to load sound files");
+	}
+	    
 	screenX = x;
 	screenY = y;
 
@@ -90,6 +115,7 @@ public class TDView extends SurfaceView implements Runnable {
 
 
     private void startGame() {
+	soundPool.play(start,1,1,0,0,1);
         //Initialize game objects
 	gameEnded = false;
             player = new PlayerShip(context, screenX, screenY);
@@ -180,9 +206,11 @@ public class TDView extends SurfaceView implements Runnable {
 
 	
 	if(hitDetected) {
-	    player.reduceShieldStrength();
+	    soundPool.play(bump, 1, 1, 0, 0, 1);
+	    player.reduceShieldStrength();	    
 	    if (player.getShieldStrength() < 0) {
                 //game over so do something
+		soundPool.play(destroyed, 1, 1, 0, 0, 1);
 		gameEnded = true;
 	    }
 	}
@@ -209,6 +237,7 @@ public class TDView extends SurfaceView implements Runnable {
 	//Completed the game!
 	if(distanceRemaining < 0){
 	    //check for new fastest time
+	    soundPool.play(win, 1, 1, 0, 0, 1);
 	    if(timeTaken < fastestTime) {
 		fastestTime = timeTaken;
 	    }
