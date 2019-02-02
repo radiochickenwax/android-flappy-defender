@@ -20,10 +20,16 @@ import android.view.MotionEvent;
 import android.graphics.Rect;
 import java.io.IOException;
 import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.widget.TextView;
 
 /*TDView.java:6: error: TDView is not abstract and does not override abstract method run() in Runnable*/
 public class TDView extends SurfaceView implements Runnable {
 
+    // persist scores
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+    
     private   SoundPool soundPool;
     int   start = -1;
     int   start_theme = -1;    
@@ -68,6 +74,17 @@ public class TDView extends SurfaceView implements Runnable {
 	super(context);
 	this.context = context;
 
+	// Get a reference to a file called HiScores. 
+	// If id doesn't exist one is created
+	prefs = context.getSharedPreferences("HiScores", 
+					     context.MODE_PRIVATE);
+	// Initialize the editor ready
+	editor = prefs.edit();
+	// Load fastest time from a entry in the file
+	//  labeled "fastestTime"
+	// if not available highscore = 1000000
+	fastestTime = prefs.getLong("fastestTime", 1000000);
+	
 	// This SoundPool is deprecated but don't worry
 	soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
 	try{
@@ -245,10 +262,16 @@ public class TDView extends SurfaceView implements Runnable {
 	}
 
 	//Completed the game!
-	if(distanceRemaining < 0){
-	    //check for new fastest time
+	if(distanceRemaining < 0) {
+	
 	    soundPool.play(win, 1, 1, 0, 0, 1);
+
+	    //check for new fastest time
 	    if(timeTaken < fastestTime) {
+		// Save high score
+		editor.putLong("fastestTime", timeTaken);
+		editor.commit();
+		
 		fastestTime = timeTaken;
 	    }
 
