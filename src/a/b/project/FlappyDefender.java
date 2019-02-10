@@ -3,6 +3,7 @@
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.view.KeyEvent;
 import android.view.View;
 import android.app.Activity;
 import android.content.Intent;
@@ -42,6 +43,16 @@ public class FlappyDefender extends Activity implements View.OnClickListener {
 	textFastestTime.setText("Fastest Time:" + fastestTime);
     }
 
+   // If the player hits the back button, quit the app
+   public boolean onKeyDown(int keyCode, KeyEvent event) {
+     if (keyCode == KeyEvent.KEYCODE_BACK) {
+	 //finish();
+          return true;
+     }
+     return false;
+   }
+
+    
     @Override
     public void onClick(View v) {
 	// must be the Play button.

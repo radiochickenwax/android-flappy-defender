@@ -1,6 +1,7 @@
 package a.b.project;
 
 import android.app.Activity;
+import android.view.KeyEvent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.view.Display;
@@ -35,6 +36,17 @@ public class GameActivity extends Activity  {
 	
     }
 
+
+   // If the player hits the back button, quit the app
+   public boolean onKeyDown(int keyCode, KeyEvent event) {
+     if (keyCode == KeyEvent.KEYCODE_BACK) {
+	 //finish();
+          return true;
+     }
+     return false;
+   }
+
+    
     // If the Activity is paused make sure to pause our thread
     @Override
     protected void onPause() {
